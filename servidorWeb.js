@@ -1,5 +1,4 @@
 //Servidor Web Sencillo
-
 var http = require('http'); //MODULO HTTP
 var fs = require('fs'); // MODULO FInLE SYSTEM
 
@@ -7,7 +6,6 @@ var fs = require('fs'); // MODULO FInLE SYSTEM
 // res = respuesta del servidor
 // Se ejecuta la funcion cada vez que el navegador hace la peticion
 // Se pueden crear N servidores en distintos puertos
-
 http.createServer(function (req, res) {
     // Leer archivo de manera Asincrona, 
     //recibe como parametros el Path y un callback que tiene de parametros
