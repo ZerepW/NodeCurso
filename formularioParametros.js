@@ -1,5 +1,8 @@
 var http = require("http");
 var fs = require("fs");
+var paramsParser = require("./paramsParser.js");
+
+var p = paramsParser.parse;
 
 http.createServer(function(req,res){
 
@@ -11,28 +14,12 @@ http.createServer(function(req,res){
         var htmlString = data.toString(); //convierte el archivo html a string
 
         var variables = htmlString.match(/[^\{\}]+(?=\})/g); // Hace match con las coincidencias entre llaves
-        var paramHash = {};
+        
         var nombre = "Invitado";
         var matricula = "123456789";
        
-        if(req.url.indexOf("?")>0  ){
-            // "/?nombre=Luis&data=123" => ["/","nombre=Luis&data=123"]
-            var urlData = req.url.split("?");
-            // "nombre=Luis&data123" => ["nombre=Luis","data=123"]
-            var parametros = urlData[1].split("&");
-            for(var i = parametros.length-1; i>=0;i--){
-                var parametro = parametros[i]; //nombre = Luis
-                var paramData = parametro.split("="); // ['nombre','Luis']
-               
-                paramHash[paramData[0]] = paramData[1];    //{nombre:Luis}
-            }
-            
-           
-        } 
-        else{
-            paramHash['nombre'] = nombre;
-            paramHash['matricula'] = matricula;
-        }
+        var paramHash = p(req);
+        
         //variables = ['nombre','matricula']
         for (var i = variables.length - 1; i>=0; i--){
             var value = eval(variables[i]);//ejecuta texto como codigo JS
