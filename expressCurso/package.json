@@ -12,6 +12,7 @@
   "author": "Luis Arturo Pérez",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "pug": "^2.0.0-rc.3"
   }
 }

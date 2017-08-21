@@ -1,0 +1,21 @@
+html
+    head  
+        title Pagina en Pug
+    body
+        //Este es un comentario
+        h1 Bienvenido Pug
+        h3= nombre
+        - var matricula =1273687
+        h4 Esta es mi matricula #{matricula}
+        p.
+            Hola haz click en este link #[a(href="http://luisarturozerep.cloudapp.net") Luis] :)
+        - var arreglo = [1,2,3,4,5];
+        each item in arreglo
+            p El valor es #{item}
+            case item
+                when 1
+                    p El valor de item era uno
+                when 2
+                    p El valor de item era dos
+                default
+                    p El valor de item no era ni uno, ni dos
